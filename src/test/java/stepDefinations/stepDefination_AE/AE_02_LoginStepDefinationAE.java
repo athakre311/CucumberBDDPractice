@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObject.LoginPage;
 
-public class AE_01_LoginStepDefinationAE {
+public class AE_02_LoginStepDefinationAE {
 	
 	LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 //	Properties prop;

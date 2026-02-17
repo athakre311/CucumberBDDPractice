@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObject.LoginPage;
 
-public class RegisterStepDefinationAE {
+public class AE_01_RegisterStepDefinationAE {
 	WebDriver driver;
 	LoginPage loginPage;
 
