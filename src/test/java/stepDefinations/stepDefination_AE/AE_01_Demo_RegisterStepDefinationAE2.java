@@ -11,40 +11,62 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pageObject.LoginPage;
-import pageObject.RegisterPage;
 
-public class AE_01_RegisterStepDefinationAE {
+public class AE_01_Demo_RegisterStepDefinationAE2 {
 	WebDriver driver;
-	LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-	RegisterPage registerPage;
+	LoginPage loginPage = new LoginPage(DriverFactory.getDriver());;
 
-	
-	@Then("{string} text should be visible")
-	public void text_should_be_visible(String string) {
+//	@When("enter required field")
+	public void enter_required_field() {
+		
 	}
 
-	@When("User enters name and email address")
+//	@Then("then user able to register and success message display")
+	public void then_user_able_to_register_and_success_message_display() {
+	    System.out.println(">>> Hello Abby <<<");
+	}
+	
+//	@Then("{string} text should be visible")
+	public void text_should_be_visible(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+//	@When("User enters name and email address")
 	public void user_enters_name_and_email_address() {
 		loginPage.enterSignupName("tesr3467");
 		loginPage.enterSignupEmail("tesr3467@test.me");
 		
 	}
 
-	@When("User clicks on Signup button")
+//	@When("User clicks on Signup button")
 	public void user_clicks_on_Signup_button(){
 		driver = loginPage.clickSignupButton();
-		registerPage = new RegisterPage(driver);
 	}
 
-	@When("User fills account details:")
+//	@When("User fills account details:")
 	public void user_fills_account_details(io.cucumber.datatable.DataTable dataTable) {
-		
 		Map<String, String> data = dataTable.asMap(String.class, String.class);
-		
-		registerPage.enterTitlePass(data.get("Title"), data.get("Password"));
+
+        // Select Title (Radio Button)
+        if (data.get("Title").equalsIgnoreCase("Mr")) {
+            driver.findElement(By.id("id_gender1")).click();
+        } else {
+            driver.findElement(By.id("id_gender2")).click();
+        }
+
+        // Enter Name
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys(data.get("Name"));
+
+        // Enter Email (if editable)
+        // driver.findElement(By.id("email")).clear();
+        // driver.findElement(By.id("email")).sendKeys(data.get("Email"));
 
         // Enter Password
+        driver.findElement(By.id("password")).sendKeys(data.get("Password"));
 
         // Select Date of Birth
         driver.findElement(By.id("days")).sendKeys(data.get("Day"));
@@ -52,7 +74,7 @@ public class AE_01_RegisterStepDefinationAE {
         driver.findElement(By.id("years")).sendKeys(data.get("Year"));
 	}
 
-	@And("User selects checkbox {string}")
+//	@And("User selects checkbox {string}")
     public void user_selects_checkbox(String checkboxText) {
 
         if (checkboxText.equalsIgnoreCase("Sign up for our newsletter!")) {
@@ -65,7 +87,7 @@ public class AE_01_RegisterStepDefinationAE {
 
     // ---------------- Address Details ----------------
 
-    @And("User fills address details:")
+//    @And("User fills address details:")
     public void user_fills_address_details(DataTable dataTable) {
 
         Map<String, String> data = dataTable.asMap(String.class, String.class);
@@ -88,19 +110,19 @@ public class AE_01_RegisterStepDefinationAE {
     // ---------------- Button Click ----------------
 
 
-    @When("User clicks on {string} button")
+//    @When("User clicks on {string} button")
     public void user_clicks_on_button(String buttonName) {
 
         driver.findElement(By.xpath("//button[contains(text(),'" + buttonName + "')]")).click();
     }
     
     
-    @When("User clicks on Delete Account button")
+//    @When("User clicks on Delete Account button")
     public void user_clicks_on_Delete_Account_button() {
         driver.findElement(By.xpath("//a[contains(text(),'Delete Account')]")).click();
     }
     
-    @When("User clicks on Continue button")
+//    @When("User clicks on Continue button")
     public void user_clicks_on_Continue_button() {
         driver.findElement(By.xpath("//a[contains(text(),'Continue')]")).click();
     }

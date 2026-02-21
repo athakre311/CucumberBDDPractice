@@ -29,7 +29,7 @@ public class MyHooks {
 		driver = driverFactory.init_driver(browserName);
 	}
 	
-	@After(order =0)
+//	@After(order =0)
 	public void quitBrowser() {
 		driver.quit();
 	}

@@ -70,8 +70,9 @@ public class LoginPage {
 		signupName.sendKeys(str);
 	}
 	
-	public void clickSignupButton() {
+	public WebDriver clickSignupButton() {
 		clickHidden(signupButton);
+		return driver;
 	}
 	
 	public void verifyLoginToYourAccountText(String expected) {
